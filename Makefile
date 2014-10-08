@@ -6,6 +6,7 @@ CC = gcc
 CFLAGS = -Wall
 LIBS =
 OBJ = irobotNavigationStatechart.o
+INC = -Iirobot 
 
 # path to C Statechart (CSC) source and solution folders
 STATECHARTSRCFILE = $(TARGET).c
@@ -15,8 +16,8 @@ STATECHARTPROJECTOUTPATH = $(STATECHARTPROJECTOUTDIR)/libstatechart.a
 
 
 %.o : %.c
-	$(CC) -c $(CFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $(INC) $< -o $@
 
 test : $(OBJ)
-	$(CC) -o $(STATECHARTPROJECTOUTDIR)/$@ $^ $(CFLAGS) $(LIBS)
+	$(CC) -o $(STATECHARTPROJECTOUTDIR)/$@ $^ $(CFLAGS) $(INC) $(LIBS)
 	$(STATECHARTPROJECTOUTDIR)/$@
